@@ -1,6 +1,6 @@
+import argparse
 import sys
 import unittest
-from sys import argv
 
 import base
 
@@ -19,5 +19,10 @@ class TestAPIResponse(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main(sys.argv[1])
+    parser = argparse.ArgumentParser()
+    parser.add_argument("UT", help="input_value")
+    parser.add_argument("unittest_args", nargs="*")
+    args = parser.parse_args()
+    sys.argv[1:] = args.unittest_args
+    unittest.main()
 

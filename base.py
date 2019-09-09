@@ -1,3 +1,4 @@
+import sys
 from sys import argv
 
 import requests
@@ -64,5 +65,8 @@ def process_input(user_param):
                 break
 
 
-process_input(user_param=argv[1])
+if len(sys.argv) > 1:
+    process_input(user_param=sys.argv[1])
+else:
+    process_input(user_param="")
 
