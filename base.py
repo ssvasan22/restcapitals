@@ -1,5 +1,4 @@
 import sys
-from sys import argv
 
 import requests
 
@@ -20,6 +19,8 @@ def get_capital_city_by_country(country_name):
                 return "Unable to find the country in the database"
     elif response.status_code == 404:
         return "Invalid URL. Server returned ", response.status_code
+    elif response.status_code == 400:
+        return "Bad Request"
     else:
         return requests.exceptions.RequestException
 
@@ -40,6 +41,8 @@ def get_capital_city_by_code(country_code):
                 return "Code has to be alphabets only"
     elif response.status_code == 404:
         return "Invalid URL. Server returned ", response.status_code
+    elif response.status_code == 400:
+        return "Bad Request"
     else:
         return requests.exceptions.RequestException
 
@@ -69,4 +72,3 @@ if len(sys.argv) > 1:
     process_input(user_param=sys.argv[1])
 else:
     process_input(user_param="")
-
